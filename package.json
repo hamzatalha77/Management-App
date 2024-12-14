@@ -11,6 +11,7 @@
   "dependencies": {
     "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^3.9.1",
+    "@reduxjs/toolkit": "^2.5.0",
     "date-fns": "^4.1.0",
     "dotenv": "^16.4.7",
     "framer-motion": "^11.13.1",
@@ -20,6 +21,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-hook-form": "^7.54.0",
+    "react-redux": "^9.2.0",
     "shadcdn": "^0.0.7",
     "tailwindcss-animate": "^1.0.7",
     "uuid": "^11.0.3",
