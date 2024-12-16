@@ -5,7 +5,9 @@ const NonDashboardNavbar = () => {
   return (
     <nav className="nondashboard-navbar">
       <div className="nondashbaord-navbar__container">
-        <Link href="/" />
+        <Link href="/" className="nondashbaord-navbar__brand">
+          GOTEI
+        </Link>
       </div>
     </nav>
   )
