@@ -1,18 +1,18 @@
-"use client";
+'use client'
 
-import { useRef } from "react";
-import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-import { setupListeners } from "@reduxjs/toolkit/query";
-import globalReducer from "@/state";
-import { api } from "@/state/api";
+import { useRef } from 'react'
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import { Provider } from 'react-redux'
+import { setupListeners } from '@reduxjs/toolkit/query'
+import globalReducer from '@/state'
+import { api } from './api'
 
 /* REDUX STORE */
 const rootReducer = combineReducers({
   global: globalReducer,
-  [api.reducerPath]: api.reducer,
-});
+  [api.reducerPath]: api.reducer
+})
 
 export const makeStore = () => {
   return configureStore({
@@ -21,45 +21,45 @@ export const makeStore = () => {
       getDefaultMiddleware({
         serializableCheck: {
           ignoredActions: [
-            "api/executeMutation/pending",
-            "api/executeMutation/fulfilled",
-            "api/executeMutation/rejected",
+            'api/executeMutation/pending',
+            'api/executeMutation/fulfilled',
+            'api/executeMutation/rejected'
           ],
           ignoredActionPaths: [
-            "meta.arg.originalArgs.file",
-            "meta.arg.originalArgs.formData",
-            "payload.chapter.video",
-            "meta.baseQueryMeta.request",
-            "meta.baseQueryMeta.response",
+            'meta.arg.originalArgs.file',
+            'meta.arg.originalArgs.formData',
+            'payload.chapter.video',
+            'meta.baseQueryMeta.request',
+            'meta.baseQueryMeta.response'
           ],
           ignoredPaths: [
-            "global.courseEditor.sections",
-            "entities.videos.data",
-            "meta.baseQueryMeta.request",
-            "meta.baseQueryMeta.response",
-          ],
-        },
-      }).concat(api.middleware),
-  });
-};
+            'global.courseEditor.sections',
+            'entities.videos.data',
+            'meta.baseQueryMeta.request',
+            'meta.baseQueryMeta.response'
+          ]
+        }
+      }).concat(api.middleware)
+  })
+}
 
 /* REDUX TYPES */
-export type AppStore = ReturnType<typeof makeStore>;
-export type RootState = ReturnType<AppStore["getState"]>;
-export type AppDispatch = AppStore["dispatch"];
-export const useAppDispatch = () => useDispatch<AppDispatch>();
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
+export type AppStore = ReturnType<typeof makeStore>
+export type RootState = ReturnType<AppStore['getState']>
+export type AppDispatch = AppStore['dispatch']
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
 
 /* PROVIDER */
 export default function StoreProvider({
-  children,
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
-  const storeRef = useRef<AppStore>();
+  const storeRef = useRef<AppStore>()
   if (!storeRef.current) {
-    storeRef.current = makeStore();
-    setupListeners(storeRef.current.dispatch);
+    storeRef.current = makeStore()
+    setupListeners(storeRef.current.dispatch)
   }
-  return <Provider store={storeRef.current}>{children}</Provider>;
+  return <Provider store={storeRef.current}>{children}</Provider>
 }
