@@ -8,6 +8,9 @@ const NonDashboardNavbar = () => {
         <Link href="/" className="nondashbaord-navbar__brand">
           GOTEI
         </Link>
+        <div className="flex items-center gap-4">
+          <div className="relative group"></div>
+        </div>
       </div>
     </nav>
   )
