@@ -12,6 +12,7 @@ const NonDashboardNavbar = () => {
           <div className="relative group">
             <Link href="/search" className="nondashbaord-navbar__search-input">
               <span className="hidden sm:inline">Search Courses</span>
+              <span className="sm:hidden">Search</span>
             </Link>
           </div>
         </div>
