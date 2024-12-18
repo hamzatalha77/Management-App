@@ -9,7 +9,11 @@ const NonDashboardNavbar = () => {
           GOTEI
         </Link>
         <div className="flex items-center gap-4">
-          <div className="relative group"></div>
+          <div className="relative group">
+            <Link href="/search" className="nondashbaord-navbar__search-input">
+              <span className="hidden sm:inline">Search Courses</span>
+            </Link>
+          </div>
         </div>
       </div>
     </nav>
