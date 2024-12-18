@@ -1,3 +1,4 @@
+import { BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -14,6 +15,7 @@ const NonDashboardNavbar = () => {
               <span className="hidden sm:inline">Search Courses</span>
               <span className="sm:hidden">Search</span>
             </Link>
+            <BookOpen className="nondashbaord-navbar__search-icon" size={18} />
           </div>
         </div>
       </div>
