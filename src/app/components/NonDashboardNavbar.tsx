@@ -19,6 +19,7 @@ const NonDashboardNavbar = () => {
           </div>
         </div>
       </div>
+      <div className="nondashbaord-navbar__actions"></div>
     </nav>
   )
 }
