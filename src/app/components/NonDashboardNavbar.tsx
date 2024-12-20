@@ -19,7 +19,9 @@ const NonDashboardNavbar = () => {
           </div>
         </div>
       </div>
-      <div className="nondashbaord-navbar__actions"></div>
+      <div className="nondashbaord-navbar__actions">
+        <button className="nondashbaord-navbar__notifications-button"></button>
+      </div>
     </nav>
   )
 }
