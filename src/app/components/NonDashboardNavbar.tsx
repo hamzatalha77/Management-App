@@ -1,4 +1,4 @@
-import { BookOpen } from 'lucide-react'
+import { Bell, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
@@ -20,7 +20,11 @@ const NonDashboardNavbar = () => {
         </div>
       </div>
       <div className="nondashbaord-navbar__actions">
-        <button className="nondashbaord-navbar__notifications-button"></button>
+        <button className="nondashbaord-navbar__notifications-button">
+          <span className="nondashbaord-navbar__notifications-indicate">
+            <Bell className="nondashbaord-navbar__notifications-icon" />
+          </span>
+        </button>
       </div>
     </nav>
   )
