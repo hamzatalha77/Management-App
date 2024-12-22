@@ -3,7 +3,9 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
+import { useCarousel } from '@/app/hooks/useCarousel'
 const Landing = () => {
+  const currentImage = useCarousel({ totalImages: 3 })
   return (
     <motion.div
       initial={{ opacity: 0 }}
