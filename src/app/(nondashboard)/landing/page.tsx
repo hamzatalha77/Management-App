@@ -29,6 +29,7 @@ const Landing = () => {
             </Link>
           </div>
         </div>
+        <div className="landing__hero-images"></div>
       </motion.div>
     </motion.div>
   )
