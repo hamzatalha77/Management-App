@@ -2,6 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 const Landing = () => {
   return (
     <motion.div
@@ -30,8 +31,14 @@ const Landing = () => {
           </div>
         </div>
         <div className="landing__hero-images">
-          {['/hero1.jpg','hero2.jpg','hero3.jpg'].map((src,index)=>(
-            
+          {['/hero1.jpg', 'hero2.jpg', 'hero3.jpg'].map((src, index) => (
+            <Image
+              key={src}
+              src={src}
+              alt={`Hero Banner ${index + 1}`}
+              fill
+              property={index === currentImage}
+            />
           ))}
         </div>
       </motion.div>
