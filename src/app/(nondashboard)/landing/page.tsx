@@ -29,7 +29,11 @@ const Landing = () => {
             </Link>
           </div>
         </div>
-        <div className="landing__hero-images"></div>
+        <div className="landing__hero-images">
+          {['/hero1.jpg','hero2.jpg','hero3.jpg'].map((src,index)=>(
+            
+          ))}
+        </div>
       </motion.div>
     </motion.div>
   )
