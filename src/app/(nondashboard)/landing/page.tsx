@@ -37,7 +37,7 @@ const Landing = () => {
               src={src}
               alt={`Hero Banner ${index + 1}`}
               fill
-              property={index === currentImage}
+              priority={index === currentImage}
             />
           ))}
         </div>
