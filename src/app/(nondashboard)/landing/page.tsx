@@ -40,6 +40,7 @@ const Landing = () => {
               alt={`Hero Banner ${index + 1}`}
               fill
               priority={index === currentImage}
+              sizes="(max-width:768px) 100vw, (max-width:1200px) 50vw, 33vw"
             />
           ))}
         </div>
