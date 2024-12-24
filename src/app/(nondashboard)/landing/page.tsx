@@ -48,6 +48,33 @@ const Landing = () => {
           ))}
         </div>
       </motion.div>
+      <motion.div
+        initial={{ y: 20, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        viewport={{ amount: 0.3, once: true }}
+        className="landing__featured"
+      >
+        <h2 className="landing__feature-title">Featured Courses</h2>
+        <p className="landing__feature-description">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi
+          veniam minima voluptatum repudiandae fuga accusantium quidem error
+          perferendis tempore. Ab.
+        </p>
+        <div className="landing__tags">
+          {[
+            'web development',
+            'enterprise IT',
+            'react nextjs',
+            'javascript',
+            'backend development'
+          ].map((tag, index) => (
+            <span key={index} className="landing__tag">
+              {tag}
+            </span>
+          ))}
+        </div>
+      </motion.div>
     </motion.div>
   )
 }
