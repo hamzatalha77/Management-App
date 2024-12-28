@@ -10,7 +10,7 @@ const Footer = () => {
           <Link
             key={item}
             href={`/${item.toLowerCase().replace('', '-')}`}
-            className="footer_link"
+            className="footer__link"
           >
             {item}
           </Link>
