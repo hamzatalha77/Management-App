@@ -19,4 +19,4 @@ export const api = createApi({
   })
 })
 
-export const { useGetCoursesQuery } = api
+export const { useGetCoursesQuery, useGetCourseQuery } = api
