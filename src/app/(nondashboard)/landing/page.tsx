@@ -109,7 +109,21 @@ const Landing = () => {
             </span>
           ))}
         </div>
-        <div className="landing__courses"></div>
+        <div className="landing__courses">
+          {courses &&
+            courses
+              .slice(0, 4)
+              .map((course, index) => (
+                <motion.div
+                  key={course.courseId}
+                  initial={{ y: 20, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  viewport={{ amount: 0.3, once: true }}
+                  className="landing__featured"
+                ></motion.div>
+              ))}
+        </div>
       </motion.div>
     </motion.div>
   )
