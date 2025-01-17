@@ -40,7 +40,6 @@ const LandingSkeleton = () => {
 const Landing = () => {
   const currentImage = useCarousel({ totalImages: 3 })
   const { data: courses, isLoading, isError } = useGetCoursesQuery({})
-  console.log('API Base URL:', process.env.NEXT_PUBLIC_API_BASE_URL)
   console.log('courses:', courses)
   return (
     <motion.div
