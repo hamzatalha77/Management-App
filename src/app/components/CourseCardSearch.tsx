@@ -9,7 +9,8 @@ const CourseCardSearch = ({
 }: SearchCourseCardProps) => {
   return (
     <div
-      onClick={`course-card-search group ${
+      onClick={onClick}
+      className={`course-card-search group ${
         isSelected
           ? 'course-card-search--selected'
           : 'course-card-search--unselected'
