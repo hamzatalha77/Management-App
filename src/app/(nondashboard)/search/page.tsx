@@ -30,7 +30,9 @@ const Search = () => {
     setSelectedCourse(course)
     router.push(`/search?id=${course.courseId}`)
   }
-
+  const handleEnrollNow = (rourseId: string) => {
+    router.push(`/checkout?step=?1&id=${courseId}&showSignUp=false`)
+  }
   return (
     <motion.div
       initial={{ opacity: 0 }}
