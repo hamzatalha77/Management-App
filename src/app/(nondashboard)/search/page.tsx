@@ -5,6 +5,7 @@ import { useGetCoursesQuery } from '@/app/state/api'
 import Loading from '@/app/components/Loading'
 import { motion } from 'framer-motion'
 import CourseCardSearch from '@/app/components/CourseCardSearch'
+import SelectedCourse from './SelectedCourse'
 
 const Search = () => {
   const searchParams = useSearchParams()
@@ -30,7 +31,7 @@ const Search = () => {
     setSelectedCourse(course)
     router.push(`/search?id=${course.courseId}`)
   }
-  const handleEnrollNow = (rourseId: string) => {
+  const handleEnrollNow = (courseId: string) => {
     router.push(`/checkout?step=?1&id=${courseId}&showSignUp=false`)
   }
   return (
@@ -64,7 +65,12 @@ const Search = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 0.5 }}
             className="search__selected-course"
-          ></motion.div>
+          >
+            <SelectedCourse
+              course={selectedCourse}
+              handleEnrollNow={handleEnrollNow}
+            />
+          </motion.div>
         )}
       </div>
     </motion.div>
