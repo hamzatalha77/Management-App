@@ -8,7 +8,6 @@ import { Skeleton } from '@/app/components/ui/skeleton'
 import { useGetCoursesQuery } from '@/app/state/api'
 import CourseCardSearch from '@/app/components/CourseCardSearch'
 import { useRouter } from 'next/navigation'
-import { useUser } from '@clerk/nextjs'
 
 const LandingSkeleton = () => {
   return (
