@@ -1,3 +1,4 @@
+'use client'
 import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
 import { dark } from '@clerk/themes'
 import { Bell, BookOpen } from 'lucide-react'
