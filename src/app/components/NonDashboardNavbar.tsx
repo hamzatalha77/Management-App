@@ -1,3 +1,4 @@
+import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
 import { Bell, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
@@ -33,6 +34,23 @@ const NonDashboardNavbar = () => {
             </span>
             <Bell className="nondashboard-navbar__notification-icon" />
           </button>
+          <SignedIn>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link
+              href="/signin"
+              className="nondashboard-navbar__auth-button--login"
+            >
+              Log in
+            </Link>
+            <Link
+              href="/signup"
+              className="nondashboard-navbar__auth-button--login"
+            >
+              Sign up
+            </Link>
+          </SignedOut>
         </div>
       </div>
     </nav>
