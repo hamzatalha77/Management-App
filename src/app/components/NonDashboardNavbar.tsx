@@ -1,9 +1,12 @@
-import { SignedIn, SignedOut, UserButton } from '@clerk/nextjs'
+import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs'
+import { dark } from '@clerk/themes'
 import { Bell, BookOpen } from 'lucide-react'
 import Link from 'next/link'
 import React from 'react'
 
 const NonDashboardNavbar = () => {
+  const { user } = useUser()
+  const userRole = user?.publicMetadata?.userType as 'student' | 'teacher'
   return (
     <nav className="nondashboard-navbar">
       <div className="nondashboard-navbar__container">
@@ -35,7 +38,20 @@ const NonDashboardNavbar = () => {
             <Bell className="nondashboard-navbar__notification-icon" />
           </button>
           <SignedIn>
-            <UserButton />
+            <UserButton
+              appearance={{
+                baseTheme: dark,
+                elements: {
+                  userButtonOuterIdentifier: 'text-customgreys-dirtyGrey',
+                  userButtonBox: 'scale-90 sm:scale-100'
+                }
+              }}
+              showName={true}
+              userProfileMode="navigation"
+              userProfileUrl={
+                userRole === 'teacher' ? '/teacher/profile' : '/user/profile'
+              }
+            />
           </SignedIn>
           <SignedOut>
             <Link
