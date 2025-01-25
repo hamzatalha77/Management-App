@@ -63,7 +63,7 @@ const NonDashboardNavbar = () => {
             </Link>
             <Link
               href="/signup"
-              className="nondashboard-navbar__auth-button--login"
+              className="nondashboard-navbar__auth-button--signup"
             >
               Sign up
             </Link>
