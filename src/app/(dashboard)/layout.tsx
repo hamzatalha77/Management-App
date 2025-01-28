@@ -8,10 +8,14 @@ import { cn } from '../lib/utils'
 import { SidebarProvider } from '../components/ui/sidebar'
 import AppSidebar from '../components/AppSidebar'
 
-export default function Layout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({
+  children
+}: {
+  children: React.ReactNode
+}) {
   const pathname = usePathname()
   const [courseId, setCourseId] = useState<string | null>(null)
-  const [user, isLoaded] = useUser()
+  const { user, isLoaded } = useUser()
 
   if (!isLoaded) return <Loading />
   if (!user) return <div>Please sign in to access this page.</div>
@@ -21,7 +25,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <AppSidebar />
         <div className="dashboard__content">
           <div className={cn('dashboard__main')} style={{ height: '100vh' }}>
-            <main className="nondashboard-layout__main">{children}</main>
+            <main className="dashboard-body">{children}</main>
           </div>
         </div>
       </div>

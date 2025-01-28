@@ -1,21 +1,21 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef } from 'react'
 import {
   ChevronDown,
   ChevronUp,
   FileText,
   CheckCircle,
-  Trophy,
-} from "lucide-react";
-import { useRouter } from "next/navigation";
-import { cn } from "@/lib/utils";
-import { useSidebar } from "@/components/ui/sidebar";
-import Loading from "@/components/Loading";
-import { useCourseProgressData } from "@/hooks/useCourseProgressData";
+  Trophy
+} from 'lucide-react'
+import { useRouter } from 'next/navigation'
+import { cn } from '@/app/lib/utils'
+import { useSidebar } from '@/components/ui/sidebar'
+import Loading from '@/components/Loading'
+import { useCourseProgressData } from '@/hooks/useCourseProgressData'
 
 const ChaptersSidebar = () => {
-  const router = useRouter();
-  const { setOpen } = useSidebar();
-  const [expandedSections, setExpandedSections] = useState<string[]>([]);
+  const router = useRouter()
+  const { setOpen } = useSidebar()
+  const [expandedSections, setExpandedSections] = useState<string[]>([])
 
   const {
     user,
@@ -24,32 +24,32 @@ const ChaptersSidebar = () => {
     chapterId,
     courseId,
     isLoading,
-    updateChapterProgress,
-  } = useCourseProgressData();
+    updateChapterProgress
+  } = useCourseProgressData()
 
-  const sidebarRef = useRef<HTMLDivElement>(null);
+  const sidebarRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    setOpen(false);
-  }, []); // eslint-disable-line react-hooks/exhaustive-deps
+    setOpen(false)
+  }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
-  if (isLoading) return <Loading />;
-  if (!user) return <div>Please sign in to view course progress.</div>;
-  if (!course || !userProgress) return <div>Error loading course content</div>;
+  if (isLoading) return <Loading />
+  if (!user) return <div>Please sign in to view course progress.</div>
+  if (!course || !userProgress) return <div>Error loading course content</div>
 
   const toggleSection = (sectionTitle: string) => {
     setExpandedSections((prevSections) =>
       prevSections.includes(sectionTitle)
         ? prevSections.filter((title) => title !== sectionTitle)
         : [...prevSections, sectionTitle]
-    );
-  };
+    )
+  }
 
   const handleChapterClick = (sectionId: string, chapterId: string) => {
     router.push(`/user/courses/${courseId}/chapters/${chapterId}`, {
-      scroll: false,
-    });
-  };
+      scroll: false
+    })
+  }
 
   return (
     <div ref={sidebarRef} className="chapters-sidebar">
@@ -74,8 +74,8 @@ const ChaptersSidebar = () => {
         />
       ))}
     </div>
-  );
-};
+  )
+}
 
 const Section = ({
   section,
@@ -86,26 +86,26 @@ const Section = ({
   expandedSections,
   toggleSection,
   handleChapterClick,
-  updateChapterProgress,
+  updateChapterProgress
 }: {
-  section: any;
-  index: number;
-  sectionProgress: any;
-  chapterId: string;
-  courseId: string;
-  expandedSections: string[];
-  toggleSection: (sectionTitle: string) => void;
-  handleChapterClick: (sectionId: string, chapterId: string) => void;
+  section: any
+  index: number
+  sectionProgress: any
+  chapterId: string
+  courseId: string
+  expandedSections: string[]
+  toggleSection: (sectionTitle: string) => void
+  handleChapterClick: (sectionId: string, chapterId: string) => void
   updateChapterProgress: (
     sectionId: string,
     chapterId: string,
     completed: boolean
-  ) => void;
+  ) => void
 }) => {
   const completedChapters =
-    sectionProgress?.chapters.filter((c: any) => c.completed).length || 0;
-  const totalChapters = section.chapters.length;
-  const isExpanded = expandedSections.includes(section.sectionTitle);
+    sectionProgress?.chapters.filter((c: any) => c.completed).length || 0
+  const totalChapters = section.chapters.length
+  const isExpanded = expandedSections.includes(section.sectionTitle)
 
   return (
     <div className="chapters-sidebar__section">
@@ -149,19 +149,19 @@ const Section = ({
       )}
       <hr className="chapters-sidebar__divider" />
     </div>
-  );
-};
+  )
+}
 
 const ProgressVisuals = ({
   section,
   sectionProgress,
   completedChapters,
-  totalChapters,
+  totalChapters
 }: {
-  section: any;
-  sectionProgress: any;
-  completedChapters: number;
-  totalChapters: number;
+  section: any
+  sectionProgress: any
+  completedChapters: number
+  totalChapters: number
 }) => {
   return (
     <>
@@ -170,16 +170,16 @@ const ProgressVisuals = ({
           {section.chapters.map((chapter: any) => {
             const isCompleted = sectionProgress?.chapters.find(
               (c: any) => c.chapterId === chapter.chapterId
-            )?.completed;
+            )?.completed
             return (
               <div
                 key={chapter.chapterId}
                 className={cn(
-                  "chapters-sidebar__progress-bar",
-                  isCompleted && "chapters-sidebar__progress-bar--completed"
+                  'chapters-sidebar__progress-bar',
+                  isCompleted && 'chapters-sidebar__progress-bar--completed'
                 )}
               ></div>
-            );
+            )
           })}
         </div>
         <div className="chapters-sidebar__trophy">
@@ -190,8 +190,8 @@ const ProgressVisuals = ({
         {completedChapters}/{totalChapters} COMPLETED
       </p>
     </>
-  );
-};
+  )
+}
 
 const ChaptersList = ({
   section,
@@ -199,18 +199,18 @@ const ChaptersList = ({
   chapterId,
   courseId,
   handleChapterClick,
-  updateChapterProgress,
+  updateChapterProgress
 }: {
-  section: any;
-  sectionProgress: any;
-  chapterId: string;
-  courseId: string;
-  handleChapterClick: (sectionId: string, chapterId: string) => void;
+  section: any
+  sectionProgress: any
+  chapterId: string
+  courseId: string
+  handleChapterClick: (sectionId: string, chapterId: string) => void
   updateChapterProgress: (
     sectionId: string,
     chapterId: string,
     completed: boolean
-  ) => void;
+  ) => void
 }) => {
   return (
     <ul className="chapters-sidebar__chapters">
@@ -228,8 +228,8 @@ const ChaptersList = ({
         />
       ))}
     </ul>
-  );
-};
+  )
+}
 
 const Chapter = ({
   chapter,
@@ -239,37 +239,37 @@ const Chapter = ({
   chapterId,
   courseId,
   handleChapterClick,
-  updateChapterProgress,
+  updateChapterProgress
 }: {
-  chapter: any;
-  index: number;
-  sectionId: string;
-  sectionProgress: any;
-  chapterId: string;
-  courseId: string;
-  handleChapterClick: (sectionId: string, chapterId: string) => void;
+  chapter: any
+  index: number
+  sectionId: string
+  sectionProgress: any
+  chapterId: string
+  courseId: string
+  handleChapterClick: (sectionId: string, chapterId: string) => void
   updateChapterProgress: (
     sectionId: string,
     chapterId: string,
     completed: boolean
-  ) => void;
+  ) => void
 }) => {
   const chapterProgress = sectionProgress?.chapters.find(
     (c: any) => c.chapterId === chapter.chapterId
-  );
-  const isCompleted = chapterProgress?.completed;
-  const isCurrentChapter = chapterId === chapter.chapterId;
+  )
+  const isCompleted = chapterProgress?.completed
+  const isCurrentChapter = chapterId === chapter.chapterId
 
   const handleToggleComplete = (e: React.MouseEvent) => {
-    e.stopPropagation();
+    e.stopPropagation()
 
-    updateChapterProgress(sectionId, chapter.chapterId, !isCompleted);
-  };
+    updateChapterProgress(sectionId, chapter.chapterId, !isCompleted)
+  }
 
   return (
     <li
-      className={cn("chapters-sidebar__chapter", {
-        "chapters-sidebar__chapter--current": isCurrentChapter,
+      className={cn('chapters-sidebar__chapter', {
+        'chapters-sidebar__chapter--current': isCurrentChapter
       })}
       onClick={() => handleChapterClick(sectionId, chapter.chapterId)}
     >
@@ -283,26 +283,26 @@ const Chapter = ({
         </div>
       ) : (
         <div
-          className={cn("chapters-sidebar__chapter-number", {
-            "chapters-sidebar__chapter-number--current": isCurrentChapter,
+          className={cn('chapters-sidebar__chapter-number', {
+            'chapters-sidebar__chapter-number--current': isCurrentChapter
           })}
         >
           {index + 1}
         </div>
       )}
       <span
-        className={cn("chapters-sidebar__chapter-title", {
-          "chapters-sidebar__chapter-title--completed": isCompleted,
-          "chapters-sidebar__chapter-title--current": isCurrentChapter,
+        className={cn('chapters-sidebar__chapter-title', {
+          'chapters-sidebar__chapter-title--completed': isCompleted,
+          'chapters-sidebar__chapter-title--current': isCurrentChapter
         })}
       >
         {chapter.title}
       </span>
-      {chapter.type === "Text" && (
+      {chapter.type === 'Text' && (
         <FileText className="chapters-sidebar__text-icon" />
       )}
     </li>
-  );
-};
+  )
+}
 
-export default ChaptersSidebar;
+export default ChaptersSidebar
