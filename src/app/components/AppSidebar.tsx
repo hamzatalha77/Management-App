@@ -96,7 +96,7 @@ const AppSidebar = () => {
                   <Link href={link.href} className="app-sidebar__nav-link">
                     <link.icon
                       className={isActive ? 'text-white-50' : 'text-gray-500'}
-                    >
+                    />
                       <span
                         className={cn(
                           'app-sidebar__nav-text',
@@ -105,7 +105,7 @@ const AppSidebar = () => {
                       >
                         {link.label}
                       </span>
-                    </link.icon>
+                   
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
