@@ -4,13 +4,21 @@ import React from 'react'
 import {
   Sidebar,
   SidebarContent,
+  SidebarFooter,
   SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
   useSidebar
 } from './ui/sidebar'
-import { BookOpen, Briefcase, PanelLeft, Settings, User } from 'lucide-react'
+import {
+  BookOpen,
+  Briefcase,
+  LogOut,
+  PanelLeft,
+  Settings,
+  User
+} from 'lucide-react'
 import Loading from './Loading'
 import Image from 'next/image'
 import { cn } from '../lib/utils'
@@ -97,22 +105,37 @@ const AppSidebar = () => {
                     <link.icon
                       className={isActive ? 'text-white-50' : 'text-gray-500'}
                     />
-                      <span
-                        className={cn(
-                          'app-sidebar__nav-text',
-                          isActive ? 'text-white-50' : 'text-gray-500'
-                        )}
-                      >
-                        {link.label}
-                      </span>
-                   
+                    <span
+                      className={cn(
+                        'app-sidebar__nav-text',
+                        isActive ? 'text-white-50' : 'text-gray-500'
+                      )}
+                    >
+                      {link.label}
+                    </span>
                   </Link>
                 </SidebarMenuButton>
+                {isActive && <div className="app-sidebar__active-indicator" />}
               </SidebarMenuItem>
             )
           })}
         </SidebarMenu>
       </SidebarContent>
+      <SidebarFooter>
+        <SidebarMenu>
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild>
+              <button
+                onClick={() => signOut()}
+                className="app-sidebar__signout"
+              >
+                <LogOut className="mr-2 h-6 w-6" />
+                <span>Sign Out</span>
+              </button>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        </SidebarMenu>
+      </SidebarFooter>
     </Sidebar>
   )
 }

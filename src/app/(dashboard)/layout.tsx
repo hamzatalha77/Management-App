@@ -25,7 +25,7 @@ export default function DashboardLayout({
         <AppSidebar />
         <div className="dashboard__content">
           <div className={cn('dashboard__main')} style={{ height: '100vh' }}>
-            <main className="dashboard-body">{children}</main>
+            <main className="dashboard__body">{children}</main>
           </div>
         </div>
       </div>
