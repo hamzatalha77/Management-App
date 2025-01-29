@@ -1,5 +1,4 @@
 'use client'
-import Navbar from '@/components/Navbar'
 import { useUser } from '@clerk/nextjs'
 import { usePathname } from 'next/navigation'
 import { useState } from 'react'
@@ -7,6 +6,7 @@ import Loading from '../components/Loading'
 import { cn } from '../lib/utils'
 import { SidebarProvider } from '../components/ui/sidebar'
 import AppSidebar from '../components/AppSidebar'
+import Navbar from '../components/Navbar'
 
 export default function DashboardLayout({
   children
@@ -25,6 +25,7 @@ export default function DashboardLayout({
         <AppSidebar />
         <div className="dashboard__content">
           <div className={cn('dashboard__main')} style={{ height: '100vh' }}>
+            <Navbar />
             <main className="dashboard__body">{children}</main>
           </div>
         </div>
