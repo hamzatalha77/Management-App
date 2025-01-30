@@ -1,46 +1,48 @@
-"use client";
+'use client'
 
-import { DragDropContext, Droppable, Draggable } from "@hello-pangea/dnd";
-import { Button } from "@/components/ui/button";
-import { Trash2, Edit, Plus, GripVertical } from "lucide-react";
-import { useAppDispatch, useAppSelector } from "@/state/redux";
+import { DragDropContext, Droppable, Draggable } from '@hello-pangea/dnd'
+import { Button } from './ui/button'
+import { Trash2, Edit, Plus, GripVertical } from 'lucide-react'
+import { useAppDispatch, useAppSelector } from '../state/redux'
 import {
   setSections,
   deleteSection,
   deleteChapter,
   openSectionModal,
-  openChapterModal,
-} from "@/state";
+  openChapterModal
+} from '../state'
 
 export default function DroppableComponent() {
-  const dispatch = useAppDispatch();
-  const { sections } = useAppSelector((state) => state.global.courseEditor);
+  const dispatch = useAppDispatch()
+  const { sections } = useAppSelector((state) => state.global.courseEditor)
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSectionDragEnd = (result: any) => {
-    if (!result.destination) return;
+    if (!result.destination) return
 
-    const startIndex = result.source.index;
-    const endIndex = result.destination.index;
+    const startIndex = result.source.index
+    const endIndex = result.destination.index
 
-    const updatedSections = [...sections];
-    const [reorderedSection] = updatedSections.splice(startIndex, 1);
-    updatedSections.splice(endIndex, 0, reorderedSection);
-    dispatch(setSections(updatedSections));
-  };
+    const updatedSections = [...sections]
+    const [reorderedSection] = updatedSections.splice(startIndex, 1)
+    updatedSections.splice(endIndex, 0, reorderedSection)
+    dispatch(setSections(updatedSections))
+  }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleChapterDragEnd = (result: any, sectionIndex: number) => {
-    if (!result.destination) return;
+    if (!result.destination) return
 
-    const startIndex = result.source.index;
-    const endIndex = result.destination.index;
+    const startIndex = result.source.index
+    const endIndex = result.destination.index
 
-    const updatedSections = [...sections];
-    const updatedChapters = [...updatedSections[sectionIndex].chapters];
-    const [reorderedChapter] = updatedChapters.splice(startIndex, 1);
-    updatedChapters.splice(endIndex, 0, reorderedChapter);
-    updatedSections[sectionIndex].chapters = updatedChapters;
-    dispatch(setSections(updatedSections));
-  };
+    const updatedSections = [...sections]
+    const updatedChapters = [...updatedSections[sectionIndex].chapters]
+    const [reorderedChapter] = updatedChapters.splice(startIndex, 1)
+    updatedChapters.splice(endIndex, 0, reorderedChapter)
+    updatedSections[sectionIndex].chapters = updatedChapters
+    dispatch(setSections(updatedSections))
+  }
 
   return (
     <DragDropContext onDragEnd={handleSectionDragEnd}>
@@ -59,8 +61,8 @@ export default function DroppableComponent() {
                     {...draggableProvider.draggableProps}
                     className={`droppable-section ${
                       sectionIndex % 2 === 0
-                        ? "droppable-section--even"
-                        : "droppable-section--odd"
+                        ? 'droppable-section--even'
+                        : 'droppable-section--odd'
                     }`}
                   >
                     <SectionHeader
@@ -112,7 +114,7 @@ export default function DroppableComponent() {
                         dispatch(
                           openChapterModal({
                             sectionIndex,
-                            chapterIndex: null,
+                            chapterIndex: null
                           })
                         )
                       }
@@ -132,19 +134,20 @@ export default function DroppableComponent() {
         )}
       </Droppable>
     </DragDropContext>
-  );
+  )
 }
 
 const SectionHeader = ({
   section,
   sectionIndex,
-  dragHandleProps,
+  dragHandleProps
 }: {
-  section: Section;
-  sectionIndex: number;
-  dragHandleProps: any;
+  section: Section
+  sectionIndex: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  dragHandleProps: any
 }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   return (
     <div className="droppable-section__header" {...dragHandleProps}>
@@ -182,21 +185,22 @@ const SectionHeader = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const ChapterItem = ({
   chapter,
   chapterIndex,
   sectionIndex,
-  draggableProvider,
+  draggableProvider
 }: {
-  chapter: Chapter;
-  chapterIndex: number;
-  sectionIndex: number;
-  draggableProvider: any;
+  chapter: Chapter
+  chapterIndex: number
+  sectionIndex: number
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  draggableProvider: any
 }) => {
-  const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch()
 
   return (
     <div
@@ -205,8 +209,8 @@ const ChapterItem = ({
       {...draggableProvider.dragHandleProps}
       className={`droppable-chapter ${
         chapterIndex % 2 === 1
-          ? "droppable-chapter--odd"
-          : "droppable-chapter--even"
+          ? 'droppable-chapter--odd'
+          : 'droppable-chapter--even'
       }`}
     >
       <div className="droppable-chapter__title">
@@ -223,7 +227,7 @@ const ChapterItem = ({
             dispatch(
               openChapterModal({
                 sectionIndex,
-                chapterIndex,
+                chapterIndex
               })
             )
           }
@@ -239,7 +243,7 @@ const ChapterItem = ({
             dispatch(
               deleteChapter({
                 sectionIndex,
-                chapterIndex,
+                chapterIndex
               })
             )
           }
@@ -248,5 +252,5 @@ const ChapterItem = ({
         </Button>
       </div>
     </div>
-  );
-};
+  )
+}

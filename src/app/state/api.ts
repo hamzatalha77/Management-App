@@ -4,6 +4,7 @@ import { FetchArgs, BaseQueryApi } from '@reduxjs/toolkit/query'
 const customBaseQuery = async (
   args: string | FetchArgs,
   api: BaseQueryApi,
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   extraOptions: any
 ) => {
   const baseQuery = fetchBaseQuery({
@@ -11,6 +12,7 @@ const customBaseQuery = async (
   })
 
   try {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const result: any = await baseQuery(args, api, extraOptions)
 
     if (result.data) {
