@@ -20,7 +20,8 @@ const SharedNotificationSettings = ({
     resolver: zodResolver(notificationSettingsSchema),
     defaultValues: {
       courseNotifications: currentSettings.courseNotifications || false,
-      emailAlerts: currentSettings.emailAlerts || false
+      emailAlerts: currentSettings.emailAlerts || false,
+      smsAlerts: currentSettings.smsAlerts || false
     }
   })
   return <div></div>
