@@ -19,7 +19,8 @@ const SharedNotificationSettings = ({
   const methods = useForm<NotificationSettingsFormData>({
     resolver: zodResolver(notificationSettingsSchema),
     defaultValues: {
-      courseNotifications: currentSettings.courseNotifications || false
+      courseNotifications: currentSettings.courseNotifications || false,
+      emailAlerts: currentSettings.emailAlerts || false
     }
   })
   return <div></div>
