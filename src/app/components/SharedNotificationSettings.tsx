@@ -38,6 +38,9 @@ const SharedNotificationSettings = ({
         }
       }
     }
+    try{
+      await updateUser(updatedUser)
+    }
   }
   return <div></div>
 }
