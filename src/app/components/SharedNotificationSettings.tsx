@@ -21,9 +21,24 @@ const SharedNotificationSettings = ({
     defaultValues: {
       courseNotifications: currentSettings.courseNotifications || false,
       emailAlerts: currentSettings.emailAlerts || false,
-      smsAlerts: currentSettings.smsAlerts || false
+      smsAlerts: currentSettings.smsAlerts || false,
+      notificationFrequency: currentSettings.notificationFrequency || 'daily'
     }
   })
+  const onSubmit = async (data: NotificationSettingsFormData) => {
+    if (!user) return
+
+    const updatedUser = {
+      userId: user.id,
+      publicMetadata: {
+        ...user.publicMetadata,
+        settings: {
+          ...currentSettings,
+          ...data
+        }
+      }
+    }
+  }
   return <div></div>
 }
 
