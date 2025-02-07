@@ -38,10 +38,13 @@ const SharedNotificationSettings = ({
         }
       }
     }
-    try{
+    try {
       await updateUser(updatedUser)
+    } catch (error) {
+      console.error('Failed to update user settings:', error)
     }
   }
+  if (!user) return <div>Please sign in to manage your settings.</div>
   return <div></div>
 }
 
