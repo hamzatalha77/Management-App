@@ -7,6 +7,8 @@ import {
 } from '../lib/schemas'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
+import Header from './Header'
+import { Form } from './ui/form'
 
 const SharedNotificationSettings = ({
   title = 'Notification Setting',
@@ -45,7 +47,17 @@ const SharedNotificationSettings = ({
     }
   }
   if (!user) return <div>Please sign in to manage your settings.</div>
-  return <div></div>
+  return (
+    <div className="notification-settings">
+      <Header title={title} subtitle={subtitle} />
+      <Form {...methods}>
+        <form
+          onSubmit={methods.handleSubmit(onSubmit)}
+          className="notification-settings__form"
+        ></form>
+      </Form>
+    </div>
+  )
 }
 
 export default SharedNotificationSettings
