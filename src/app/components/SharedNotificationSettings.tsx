@@ -1,3 +1,4 @@
+'use client'
 import { useUser } from '@clerk/nextjs'
 import React from 'react'
 import { useUpdateUserMutation } from '../state/api'
@@ -61,6 +62,21 @@ const SharedNotificationSettings = ({
               name="courseNotifications"
               label="Course Notifications"
               type="switch"
+            />
+            <CustomFormField
+              name="emailAlerts"
+              label="Email Alerts"
+              type="switch"
+            />
+            <CustomFormField
+              name="smsAlerts"
+              label="SMS Alerts"
+              type="switch"
+            />
+            <CustomFormField
+              name="notificationFrequency"
+              label="Notification Frequency"
+              type="select"
             />
           </div>
         </form>
