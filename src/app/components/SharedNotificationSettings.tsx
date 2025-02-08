@@ -9,6 +9,7 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import Header from './Header'
 import { Form } from './ui/form'
+import { CustomFormField } from './CustomFormField'
 
 const SharedNotificationSettings = ({
   title = 'Notification Setting',
@@ -54,7 +55,15 @@ const SharedNotificationSettings = ({
         <form
           onSubmit={methods.handleSubmit(onSubmit)}
           className="notification-settings__form"
-        ></form>
+        >
+          <div className="notification-settings__fields">
+            <CustomFormField
+              name="courseNotifications"
+              label="Course Notifications"
+              type="switch"
+            />
+          </div>
+        </form>
       </Form>
     </div>
   )
