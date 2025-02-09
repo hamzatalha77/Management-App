@@ -11,6 +11,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import Header from './Header'
 import { Form } from './ui/form'
 import { CustomFormField } from './CustomFormField'
+import { Button } from './ui/button'
 
 const SharedNotificationSettings = ({
   title = 'Notification Setting',
@@ -84,6 +85,9 @@ const SharedNotificationSettings = ({
               ]}
             />
           </div>
+          <Button type="submit" className="notification-settings__submit">
+            Update Settings
+          </Button>
         </form>
       </Form>
     </div>
