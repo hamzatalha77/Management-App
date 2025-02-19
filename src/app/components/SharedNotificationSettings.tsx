@@ -18,7 +18,7 @@ const SharedNotificationSettings = ({
   subtitle = 'Manage your notification settings'
 }: SharedNotificationSettingsProps) => {
   const { user } = useUser()
-  const { updateUser } = useUpdateUserMutation()
+  const [updateUser] = useUpdateUserMutation()
   const currentSettings =
     (user?.publicMetadata as { settings?: UserSettings })?.settings || {}
   const methods = useForm<NotificationSettingsFormData>({
