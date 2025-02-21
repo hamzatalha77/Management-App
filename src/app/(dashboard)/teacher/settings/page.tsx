@@ -1,7 +1,7 @@
 import SharedNotificationSettings from '@/app/components/SharedNotificationSettings'
 import React from 'react'
 
-const UserSettings = () => {
+const TeacherSettings = () => {
   return (
     <div className="w-3/5">
       <SharedNotificationSettings
@@ -12,4 +12,4 @@ const UserSettings = () => {
   )
 }
 
-export default UserSettings
+export default TeacherSettings
