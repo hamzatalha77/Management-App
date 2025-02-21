@@ -8,9 +8,9 @@ import {
 } from 'lucide-react'
 import { useRouter } from 'next/navigation'
 import { cn } from '@/app/lib/utils'
-import { useSidebar } from '@/components/ui/sidebar'
-import Loading from '@/components/Loading'
-import { useCourseProgressData } from '@/hooks/useCourseProgressData'
+import { useSidebar } from '@/app/components/ui/sidebar'
+import { useCourseProgressData } from '@/app/hooks/useCourseProgressData'
+import Loading from '@/app/components/Loading'
 
 const ChaptersSidebar = () => {
   const router = useRouter()
